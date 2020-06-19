@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
 
     public Rigidbody2D Rig;
 
+    public ParticleGenerator particleGenerator;
+    public GameObject Pencil;
+
     private void Awake()
     {
+        Pencil.SetActive(false);
         LineRenderer.positionCount = 0;
     }
 
@@ -34,6 +38,9 @@ public class GameManager : MonoBehaviour
 
             if (!pointList.Contains(mousePosition))
             {
+                Pencil.SetActive(true);
+                Pencil.transform.position = mousePosition;
+
                 LineRenderer.positionCount = pointCount + 1;
                 LineRenderer.SetPosition(pointCount, mousePosition);
                 pointCount++;
@@ -76,6 +83,8 @@ public class GameManager : MonoBehaviour
         {
             drawEnded = true;
             Rig.bodyType = RigidbodyType2D.Dynamic;
+            particleGenerator.GenerateParticle();
+            Pencil.SetActive(false);
         }
     }
 }
