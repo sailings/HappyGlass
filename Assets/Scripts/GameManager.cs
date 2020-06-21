@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
         {
             drawEnded = true;
             Rig.bodyType = RigidbodyType2D.Dynamic;
+            Rig.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            Rig.mass = 100.0f;
             particleGenerator.GenerateParticle();
             Pencil.SetActive(false);
         }

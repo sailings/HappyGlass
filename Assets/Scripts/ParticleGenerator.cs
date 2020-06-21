@@ -10,6 +10,8 @@ public class ParticleGenerator : MonoBehaviour
     private bool isGenerating = false;
     public Transform WaterPoint;
 
+    public GlassFill GlassFill;
+
 
     public void GenerateParticle()
     {
@@ -30,6 +32,7 @@ public class ParticleGenerator : MonoBehaviour
             newObj.transform.position = new Vector3(Random.Range(WaterPoint.position.x - 0.001f, WaterPoint.position.x + 0.001f), Random.Range(WaterPoint.position.y - 0.001f, WaterPoint.position.y + 0.001f), 0);
             particleCount++;
         }
+        GlassFill.CanCheckComplete = true;
     }
 
     // Start is called before the first frame update
