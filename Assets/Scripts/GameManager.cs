@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class GameManager : MonoBehaviour
     private List<Vector2> pointList = new List<Vector2>();
     private bool allowDraw = true;
     private bool drawEnded = false;
+
+    public Slider PenValue;
+    public Text PercentText;
+    public GameObject Star1;
+    public GameObject Star2;
+    public GameObject Star3;
 
     public LayerMask LayerMask;
 
@@ -21,6 +28,8 @@ public class GameManager : MonoBehaviour
     {
         Pencil.SetActive(false);
         LineRenderer.positionCount = 0;
+        PenValue.value = 1.0f;
+        PercentText.text = "100%";
     }
 
     // Start is called before the first frame update
@@ -50,6 +59,19 @@ public class GameManager : MonoBehaviour
                 {
                     var point1 = pointList[pointCount - 2];
                     var point2 = pointList[pointCount - 1];
+
+                    var distance = Vector3.Distance(point1,point2);
+                    PenValue.value = PenValue.value - distance / 10.0f;
+                    PercentText.text = (int)(PenValue.value * 100) + "%";
+                    Star3.SetActive(PenValue.value > 0.75f);
+                    Star2.SetActive(PenValue.value > 0.5f);
+                    Star1.SetActive(PenValue.value > 0.25f);
+
+                    if (PenValue.value <= 0)
+                    {
+                        allowDraw = false;
+                        Pencil.SetActive(false);
+                    }
 
                     var currentColliderObject = new GameObject("Collider");
                     currentColliderObject.transform.position = (point1 + point2) / 2;
