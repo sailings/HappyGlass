@@ -26,6 +26,8 @@ public class GameManager : BaseMonoBehaviour
 
     public static GameManager Instance;
 
+    public GameObject GameSuccessUI;
+
     private void Awake()
     {
         Pencil.SetActive(false);
@@ -33,6 +35,7 @@ public class GameManager : BaseMonoBehaviour
         PenValue.value = 1.0f;
         PercentText.text = "100%";
         Instance = this;
+        GameSuccessUI.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -53,6 +56,17 @@ public class GameManager : BaseMonoBehaviour
             {
                 fire.Play();
             }
+            int levelStars = 0;
+            if (Star1.activeSelf)
+                levelStars++;
+            if (Star2.activeSelf)
+                levelStars++;
+            if (Star3.activeSelf)
+                levelStars++;
+            ExecuteAction(()=> {
+                GameSuccessUI.SetActive(true);
+                Debug.Log(levelStars);
+            },3.0f);
         }
     }
 
