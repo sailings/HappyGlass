@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : BaseMonoBehaviour
 {
     public LineRenderer LineRenderer;
     private int pointCount = 0;
@@ -24,18 +24,36 @@ public class GameManager : MonoBehaviour
     public ParticleGenerator particleGenerator;
     public GameObject Pencil;
 
+    public static GameManager Instance;
+
     private void Awake()
     {
         Pencil.SetActive(false);
         LineRenderer.positionCount = 0;
         PenValue.value = 1.0f;
         PercentText.text = "100%";
+        Instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void GameSuccess()
+    {
+        if (!GameState.IsGameSuccess)
+        {
+            GameState.IsGameSuccess = true;
+            Debug.Log("GameSuccess");
+            PlayAudioSource(GetComponent<AudioSource>());
+            var fires = GetComponentsInChildren<ParticleSystem>();
+            foreach (var fire in fires)
+            {
+                fire.Play();
+            }
+        }
     }
 
     // Update is called once per frame

@@ -58,6 +58,7 @@ public class GlassFill : MonoBehaviour
                 Debug.Log("Success");
                 spriteRenderer.sprite = HappyGlass;
                 GameSuccess = true;
+                GameManager.Instance.GameSuccess();
             }
         }
     }

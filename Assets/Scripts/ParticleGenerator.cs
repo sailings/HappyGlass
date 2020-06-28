@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleGenerator : MonoBehaviour
+public class ParticleGenerator : BaseMonoBehaviour
 {
     public GameObject ParticleObj;
     public int ParticleMaxCount = 100;
@@ -19,6 +19,7 @@ public class ParticleGenerator : MonoBehaviour
         {
             isGenerating = true;
             StartCoroutine(CreateParticle());
+            PlayAudioSource(GetComponent<AudioSource>());
         }
     }
 
