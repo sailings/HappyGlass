@@ -66,6 +66,7 @@ public class GameManager : BaseMonoBehaviour
             ExecuteAction(()=> {
                 GameSuccessUI.SetActive(true);
                 Debug.Log(levelStars);
+                GameSuccessUI.GetComponent<GameSuccessAnimation>().PlayAnimation(levelStars);
             },3.0f);
         }
     }
