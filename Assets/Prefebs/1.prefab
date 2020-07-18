@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 4676422838770193292}
   - component: {fileID: 4676422838770193290}
   - component: {fileID: 4676422838770193293}
+  - component: {fileID: 719078627}
+  - component: {fileID: 719078628}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -149,6 +151,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &719078627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676422838770193295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e3acb1c9252524a8adc40bbc8dab9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockObj: {fileID: 4676422839710922599}
+  LevelText: {fileID: 4676422840013962544}
+  Star1: {fileID: 4676422838971056533}
+  Star2: {fileID: 4676422839789182867}
+  Star3: {fileID: 4676422838701436150}
+  LevelNumber: 1
+  Locked: 1
+  Stars: 0
+  StarsUI: {fileID: 4676422839085593892}
+--- !u!114 &719078628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676422838770193295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 719078627}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4676422838971056533
 GameObject:
   m_ObjectHideFlags: 0

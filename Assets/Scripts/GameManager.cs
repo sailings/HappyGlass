@@ -85,6 +85,11 @@ public class GameManager : BaseMonoBehaviour
                 levelStars++;
             if (Star3.activeSelf)
                 levelStars++;
+
+            GameState.SetLevelStars(GameState.LevelPlaying, levelStars);
+            GameState.LevelReached++;
+            GameState.IsGameSuccess = true;
+
             ExecuteAction(()=> {
                 GameSuccessUI.SetActive(true);
                 Debug.Log(levelStars);
