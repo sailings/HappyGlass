@@ -7,7 +7,7 @@ public class BaseMonoBehaviour : MonoBehaviour
 {
     public void PlayAudioSource(AudioSource audioSource)
     {
-        if (audioSource != null)
+        if (audioSource != null && GameState.SoundOn)
             audioSource.Play();
     }
 

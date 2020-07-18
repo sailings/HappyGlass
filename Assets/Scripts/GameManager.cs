@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -30,6 +31,9 @@ public class GameManager : BaseMonoBehaviour
     public GameObject GameSuccessUI;
 
     public Text LevelText;
+
+    private bool clickOnUI = false;
+
 
     private void Awake()
     {
@@ -91,7 +95,15 @@ public class GameManager : BaseMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0) && allowDraw)
+        if (Input.GetMouseButtonDown(0))
+        {
+            var clickUIElement = EventSystem.current.currentSelectedGameObject;
+            clickOnUI = clickUIElement != null;
+            //if (clickUIElement)
+                //Debug.Log(clickUIElement.name);
+        }
+
+        else if(Input.GetMouseButton(0) && allowDraw && !clickOnUI)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -99,6 +111,7 @@ public class GameManager : BaseMonoBehaviour
             {
                 Pencil.SetActive(true);
                 Pencil.transform.position = mousePosition;
+                Pencil.GetComponent<AudioSource>().enabled = GameState.SoundOn;
 
                 LineRenderer.positionCount = pointCount + 1;
                 LineRenderer.SetPosition(pointCount, mousePosition);
@@ -144,8 +157,11 @@ public class GameManager : BaseMonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) || !allowDraw)
         {
-            allowDraw = false;
-            DrawEnd();
+            if (!clickOnUI)
+            {
+                allowDraw = false;
+                DrawEnd();
+            }
         }
     }
 
