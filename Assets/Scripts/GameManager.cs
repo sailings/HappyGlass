@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : BaseMonoBehaviour
@@ -28,6 +29,8 @@ public class GameManager : BaseMonoBehaviour
 
     public GameObject GameSuccessUI;
 
+    public Text LevelText;
+
     private void Awake()
     {
         Pencil.SetActive(false);
@@ -36,12 +39,26 @@ public class GameManager : BaseMonoBehaviour
         PercentText.text = "100%";
         Instance = this;
         GameSuccessUI.SetActive(false);
+        LevelText.text = $"第{GameState.LevelPlaying}关";
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void ReloadScene()
+    {
+        GameState.IsGameSuccess = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextScene()
+    {
+        GameState.IsGameSuccess = false;
+        GameState.LevelPlaying++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void GameSuccess()
