@@ -93,6 +93,11 @@ public class GameManager : BaseMonoBehaviour
         }
     }
 
+    public void GoToLevelList()
+    {
+        SceneManager.LoadScene("LevelList");
+    }
+
     // Update is called once per frame
     void Update()
     {
