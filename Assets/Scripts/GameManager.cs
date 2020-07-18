@@ -34,6 +34,7 @@ public class GameManager : BaseMonoBehaviour
 
     private bool clickOnUI = false;
 
+    public GameObject Hint;
 
     private void Awake()
     {
@@ -112,6 +113,7 @@ public class GameManager : BaseMonoBehaviour
                 Pencil.SetActive(true);
                 Pencil.transform.position = mousePosition;
                 Pencil.GetComponent<AudioSource>().enabled = GameState.SoundOn;
+                Hint.GetComponent<Hint>().HideFinger();
 
                 LineRenderer.positionCount = pointCount + 1;
                 LineRenderer.SetPosition(pointCount, mousePosition);
@@ -163,6 +165,11 @@ public class GameManager : BaseMonoBehaviour
                 DrawEnd();
             }
         }
+    }
+
+    public void ShowHint()
+    {
+        Hint.GetComponent<Hint>().ShowHint();
     }
 
     void DrawEnd()
