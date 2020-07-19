@@ -103,6 +103,7 @@ MonoBehaviour:
   ParticleMaxCount: 100
   WaterPoint: {fileID: 5149147008390467653}
   GlassFill: {fileID: 0}
+  ParticleForce: {x: 0, y: 0, z: 0}
 --- !u!50 &5149147007686554364
 Rigidbody2D:
   serializedVersion: 4
