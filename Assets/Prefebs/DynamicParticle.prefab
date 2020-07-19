@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4215602322234282501}
   - component: {fileID: 4215602322234282502}
   - component: {fileID: 4215602322234282503}
+  - component: {fileID: -1989093164518933017}
   m_Layer: 0
   m_Name: DynamicParticle
   m_TagString: DynamicParticle
@@ -227,3 +228,16 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-1989093164518933017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215602322234282498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e45d0f6ab6d1e54698ea4838fb37b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GasCol: {r: 0.2830189, g: 0.24430405, b: 0.24430405, a: 0.56078434}

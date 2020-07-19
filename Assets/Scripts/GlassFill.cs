@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlassFill : MonoBehaviour
+public class GlassFill : BaseMonoBehaviour
 {
     public bool CanCheckComplete = false;
     private bool GameSuccess = false;
@@ -39,6 +39,8 @@ public class GlassFill : MonoBehaviour
             {
                 Debug.Log("Failed");
                 spriteRenderer.sprite = SadGlass;
+                ExecuteAction(GameManager.Instance.ReloadScene, 1.0f);
+
             }
         }
     }

@@ -87,7 +87,9 @@ public class GameManager : BaseMonoBehaviour
                 levelStars++;
 
             GameState.SetLevelStars(GameState.LevelPlaying, levelStars);
-            GameState.LevelReached++;
+            //GameState.LevelReached++;
+            if (GameState.LevelPlaying == GameState.LevelReached)
+                GameState.LevelReached++;
             GameState.IsGameSuccess = true;
 
             ExecuteAction(()=> {

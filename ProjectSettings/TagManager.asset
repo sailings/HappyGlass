@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DynamicParticle
+  - Hot
   layers:
   - Default
   - TransparentFX

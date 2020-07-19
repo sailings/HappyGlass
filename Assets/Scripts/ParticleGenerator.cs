@@ -11,6 +11,7 @@ public class ParticleGenerator : BaseMonoBehaviour
     public Transform WaterPoint;
 
     public GlassFill GlassFill;
+    public Vector3 ParticleForce;
 
 
     public void GenerateParticle()
@@ -29,6 +30,7 @@ public class ParticleGenerator : BaseMonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             var newObj = Instantiate(ParticleObj);
+            newObj.GetComponent<Rigidbody2D>().AddForce(ParticleForce);
             newObj.transform.parent = gameObject.transform;
             newObj.transform.position = new Vector3(Random.Range(WaterPoint.position.x - 0.001f, WaterPoint.position.x + 0.001f), Random.Range(WaterPoint.position.y - 0.001f, WaterPoint.position.y + 0.001f), 0);
             particleCount++;
