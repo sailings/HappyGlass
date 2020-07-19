@@ -36,6 +36,9 @@ public class GameManager : BaseMonoBehaviour
 
     public GameObject Hint;
 
+    public GameObject Glass;
+    private GameObject[] Obs;
+
     private void Awake()
     {
         Pencil.SetActive(false);
@@ -45,6 +48,13 @@ public class GameManager : BaseMonoBehaviour
         Instance = this;
         GameSuccessUI.SetActive(false);
         LevelText.text = $"第{GameState.LevelPlaying}关";
+        if (Glass)
+            Glass.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        Obs = GameObject.FindGameObjectsWithTag("Obstacle");
+        for (int i = 0; i < Obs.Length; i++)
+        {
+            Obs[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        }
     }
 
     // Start is called before the first frame update
@@ -192,6 +202,12 @@ public class GameManager : BaseMonoBehaviour
             Rig.bodyType = RigidbodyType2D.Dynamic;
             Rig.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             Rig.mass = 100.0f;
+            if (Glass)
+                Glass.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            for (int i = 0; i < Obs.Length; i++)
+            {
+                Obs[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
             particleGenerator.GenerateParticle();
             Pencil.SetActive(false);
         }

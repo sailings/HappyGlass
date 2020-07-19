@@ -16,11 +16,14 @@ public class GlassFill : BaseMonoBehaviour
 
     private int inGlassCount = 0;
 
+
+
     private void Awake()
     {
         inGlassCount = 0;
         totalCheckTime = 0;
         GameSuccess = false;
+
     }
 
     // Start is called before the first frame update
@@ -62,6 +65,9 @@ public class GlassFill : BaseMonoBehaviour
                 GameSuccess = true;
                 GameManager.Instance.GameSuccess();
             }
+            collision.gameObject.tag = "InGlassWater";
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0.3f;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity / 4.0f;
         }
     }
 }
