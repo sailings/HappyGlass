@@ -273,6 +273,7 @@ MonoBehaviour:
   Star1: {fileID: 1892844968166166887}
   Star2: {fileID: 1892844968340450007}
   Star3: {fileID: 1892844968012113458}
+  NextButton: {fileID: 1892844968981897926}
 --- !u!82 &1892844967560064679
 AudioSource:
   m_ObjectHideFlags: 0

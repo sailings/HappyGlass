@@ -9,11 +9,16 @@ public class GameSuccessAnimation : BaseMonoBehaviour
     public GameObject Star2;
     public GameObject Star3;
 
+    public GameObject NextButton;
+
     private void Awake()
     {
         Star1.SetActive(false);
         Star2.SetActive(false);
         Star3.SetActive(false);
+
+        if (GameState.LevelPlaying >= GameState.MaxLevel)
+            NextButton.SetActive(false);
     }
 
     public void PlayAnimation(int stars)
